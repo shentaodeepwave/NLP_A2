@@ -3,7 +3,6 @@ import nltk
 from nltk.tokenize import word_tokenize
 from collections import defaultdict
 import math
-from tqdm import tqdm
 nltk.download('punkt')
 
 def preprocess(inputfile, outputfile):
@@ -97,7 +96,7 @@ def add_n_perplexity_batch(input, output, n):
 
     with open(input, 'r', encoding='utf-8') as infile, open(output, 'w', encoding='utf-8') as outfile:
         outfile.write(f'test-Set-PPL\n')
-        for line in tqdm(infile):
+        for line in (infile):
             sentence_original = line.strip()
             sentence = sentence_preprocess(sentence_original, word_dict)
             

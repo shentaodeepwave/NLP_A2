@@ -159,14 +159,14 @@ def main():
         ppl = add_one_perplexity(opt.add_one_perplexity[0])
         print('The perplexity of the sentence using the add-one smoothing is: ' + str(ppl))
     elif opt.add_n_perplexity:
-        sentence = opt.add_n_perplexity[0]
-        n = int(opt.add_n_perplexity[1])
+        sentence = opt.add_n_perplexity[0] 
+        n = opt.add_n_perplexity[1]
         ppl = add_n_perplexity(sentence, n)
         print('The perplexity of the sentence using the add-' + str(n) + ' smoothing is: ' + str(ppl))
     elif opt.add_n_perplexity_batch:
         input = opt.add_n_perplexity_batch[0]
         output = opt.add_n_perplexity_batch[1]
-        n = int(opt.add_n_perplexity_batch[2])
+        n = float(opt.add_n_perplexity_batch[2])
         add_n_perplexity_batch(input, output, n)
 
 if __name__ == '__main__':

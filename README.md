@@ -12,7 +12,7 @@ Before running this program, please ensure that the following dependencies are i
 You can install the dependencies using the following command:
 
 ```bash
-pip install nltk tqdm
+pip install nltk
 ```
 
 ## Usage
@@ -64,5 +64,5 @@ python bigram.py -ppln "This is a test sentence." 5
 Batch calculate the add-n smoothing perplexity of each sentence in the input file and save the results to the output file.
 
 ```bash
-python bigram.py -pplnb "news.test" "perplexity-n.txt" 1
+python bigram.py -pplnb "news.test" "perplexity-n.txt" 0.00425
 ```

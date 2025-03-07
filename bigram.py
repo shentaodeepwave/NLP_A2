@@ -63,14 +63,17 @@ def add_one_perplexity(sentence):
     bigram_dict = read_bigram_count()
     sentence = sentence_preprocess(sentence, word_dict)
     V = len(word_dict)
-    N = len(sentence) - 1
+    N = len(sentence)
     perplexity = 1.0
-    for i in range(N):
+    for i in range(N-1):
         bigram = (sentence[i], sentence[i + 1])
         bigram_count = bigram_dict.get(bigram, 0) + 1
         word_count = word_dict.get(sentence[i], 0) + V
         perplexity *= (bigram_count / word_count)
-    perplexity = math.pow(perplexity, -1 / N)
+    if perplexity != 0:
+        perplexity = math.pow(perplexity, -1 / (N))
+    else:
+        perplexity = str('INF')
     return perplexity
 
 def add_n_perplexity(sentence, n):
@@ -78,14 +81,18 @@ def add_n_perplexity(sentence, n):
     bigram_dict = read_bigram_count()
     sentence = sentence_preprocess(sentence, word_dict)
     V = len(word_dict)
-    N = len(sentence) - 1
+    N = len(sentence)
     perplexity = 1.0
-    for i in range(N):
+    for i in range(N-1):
         bigram = (sentence[i], sentence[i + 1])
         bigram_count = bigram_dict.get(bigram, 0) + n
         word_count = word_dict.get(sentence[i], 0) + n * V
         perplexity *= (bigram_count / word_count)
-    perplexity = math.pow(perplexity, -1 / N)
+
+    if perplexity != 0:
+        perplexity = math.pow(perplexity, -1 / (N))
+    else:
+        perplexity = str('INF')
     return perplexity
 
 def add_n_perplexity_batch(input, output, n):
